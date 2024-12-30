@@ -367,15 +367,30 @@ export default function BookUploadPage() {
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8 border-2 border-amber-500 dark:border-indigo-500">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Detected Books</h2>
-              <button
-                onClick={handleSaveAllBooks}
-                disabled={isSavingAll}
-                className={`px-4 py-2 bg-amber-500 dark:bg-indigo-600 text-white rounded-lg 
-                  ${isSavingAll ? 'opacity-50 cursor-not-allowed' : 'hover:bg-amber-600 dark:hover:bg-indigo-700'} 
-                  transition-colors duration-200`}
-              >
-                {isSavingAll ? 'Saving All...' : 'Save All Books'}
-              </button>
+              <div className="flex space-x-4">
+                <button
+                  onClick={() => {
+                    setDetectedBooks(prev => [...prev, {
+                      title: '',
+                      author: '',
+                      genre: '',
+                      isEditing: true
+                    }])
+                  }}
+                  className="px-4 py-2 bg-green-500 dark:bg-green-600 text-white rounded-lg hover:bg-green-600 dark:hover:bg-green-700 transition-colors duration-200"
+                >
+                  Add Book
+                </button>
+                <button
+                  onClick={handleSaveAllBooks}
+                  disabled={isSavingAll}
+                  className={`px-4 py-2 bg-amber-500 dark:bg-indigo-600 text-white rounded-lg 
+                    ${isSavingAll ? 'opacity-50 cursor-not-allowed' : 'hover:bg-amber-600 dark:hover:bg-indigo-700'} 
+                    transition-colors duration-200`}
+                >
+                  {isSavingAll ? 'Saving All...' : 'Save All Books'}
+                </button>
+              </div>
             </div>
 
             {/* Bookshelf Creation UI */}
@@ -509,18 +524,33 @@ export default function BookUploadPage() {
                             className="rounded shadow-sm"
                           />
                         )}
-                        <button 
-                          onClick={() => setBookPreview({
-                            title: book.title,
-                            author: book.author,
-                            genre: book.genre,
-                            cover: book.coverUrl || '',
-                            bookshelfId: book.bookshelfId
-                          })}
-                          className="text-amber-500 dark:text-indigo-400 hover:text-amber-600 dark:hover:text-indigo-500"
-                        >
-                          Select
-                        </button>
+                        <div className="flex space-x-2">
+                          <button 
+                            onClick={() => setBookPreview({
+                              title: book.title,
+                              author: book.author,
+                              genre: book.genre,
+                              cover: book.coverUrl || '',
+                              bookshelfId: book.bookshelfId
+                            })}
+                            className="text-amber-500 dark:text-indigo-400 hover:text-amber-600 dark:hover:text-indigo-500"
+                          >
+                            Select
+                          </button>
+                          <button
+                            onClick={() => {
+                              setDetectedBooks(prev => prev.filter((_, i) => i !== index))
+                              if (bookPreview && 
+                                  bookPreview.title === book.title && 
+                                  bookPreview.author === book.author) {
+                                setBookPreview(null)
+                              }
+                            }}
+                            className="text-red-500 hover:text-red-600 transition-colors duration-200"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
