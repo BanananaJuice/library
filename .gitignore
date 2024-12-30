@@ -1,0 +1,49 @@
+# Dependencies
+**/node_modules
+**/.pnp
+**/.pnp.js
+**/.yarn/install-state.gz
+
+# Testing
+**/coverage
+
+# Next.js
+**/.next/
+**/out/
+
+# Production
+**/build
+
+# Misc
+**/.DS_Store
+**/*.pem
+
+# Debug
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+
+# Local env files
+**/.env*.local
+**/.env
+!**/.env.example
+
+# Vercel
+**/.vercel
+
+# TypeScript
+**/*.tsbuildinfo
+**/next-env.d.ts
+
+# Sensitive files
+**/google.json
+**/service-account*.json
+**/*-446109-*.json
+**/credentials*.json
+**/*.key.json
+
+# IDE and Editor files
+**/.idea/
+**/.vscode/
+**/*.swp
+**/*.swo 
