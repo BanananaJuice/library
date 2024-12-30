@@ -1,11 +1,10 @@
 run = "cowsay Configure me!"
+
 modules = ["nodejs-20"]
 
 [nix]
 channel = "stable-24_05"
 
-[deployment]
-run = ["sh", "-c", "cowsay Configure me!"]
 
 [[ports]]
 localPort = 3000
