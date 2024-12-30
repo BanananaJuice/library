@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 254, 243, 199;
+  --background-end-rgb: 255, 251, 235;
+}
+
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 17, 24, 39;
+  --background-end-rgb: 31, 41, 55;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .retro-button {
+    @apply bg-amber-400 dark:bg-indigo-600 text-gray-800 dark:text-white font-mono py-2 px-4 rounded-lg border-2 border-amber-600 dark:border-indigo-400 shadow-md hover:bg-amber-300 dark:hover:bg-indigo-500 transition-colors duration-200;
+  }
+
+  .retro-input {
+    @apply bg-white dark:bg-gray-700 text-gray-800 dark:text-white font-mono py-2 px-4 rounded-lg border-2 border-amber-500 dark:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-amber-500 dark:focus:ring-indigo-500;
+  }
+
+  .retro-card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden border-2 border-amber-500 dark:border-indigo-500;
+  }
+}
+
