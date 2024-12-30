@@ -38,3 +38,23 @@ next-env.d.ts
 # Google Cloud credentials
 **/google.json
 **/service-account*.json
+
+# Sensitive files
+.env
+.env.*
+!.env.example
+**/google.json
+**/service-account*.json
+**/*-446109-*.json
+**/credentials*.json
+**/*.key.json
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
